@@ -4,8 +4,9 @@ import React, { ChangeEvent, FormEvent, useState} from "react"
 import { addTodo } from "../api";
 import {v4 as uuidv4} from "uuid";
 
+// タスク追加のコンポーネント
 const AddTask = () => {
-    const [taskTitle, setTaskTitle] = useState("")
+    const [taskTitle, setTaskTitle] = useState("") // useState最初はない
     
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -23,7 +24,7 @@ const AddTask = () => {
             onChange={(e: ChangeEvent<HTMLInputElement>) => setTaskTitle(e.target.value)} // ここもTS
         />
         <button className="w-full px-4 py-2 text-white bg-blue-500 rounded transform hover:scale-95 duration-200">
-            AddTask
+            Add Task
         </button>
     </form>
   )

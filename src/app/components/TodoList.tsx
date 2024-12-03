@@ -2,16 +2,16 @@ import React from 'react'
 import { Task } from '../types';
 import Todo from "./Todo"
 
-
+// propsの形(type)を指定？
 interface TodoListProps {
-  todos: Task[];
+  props: Task[]; ///
 }
 
-// propsもっと簡単にできなかったっけ？
-const TodoList = ({todos}: TodoListProps) => {
+// propsを上の型で呼んで、Todoの数だけ<ul>を作る
+const TodoList = ({props}: TodoListProps) => { 
   return (
     <ul className="space-y-3">
-      {todos.map((todo) => (
+      {props.map((todo) => ( 
       <Todo key={todo.id} todo={todo}/>
       ))}
     </ul>

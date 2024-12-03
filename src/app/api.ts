@@ -1,9 +1,11 @@
 import { Task } from "./types";
+import router from "next/navigation"
+import { useRouter } from 'next/router'
 
-
+// apiからデータをjson形式で取得
 export const getAllTodos = async ():Promise<Task[]> => { //PromiseとかはTypeScript？？
-    const res = await fetch('http://localhost:3001/tasks', {
-        cache: "no-store", //SSR
+    const res = await fetch('http://localhost:3001/tasks', { // api先のURL
+        cache: "no-store", // SSR → 情報の懇親が頻繁なので、
     });
     const todos  = res.json();
     
@@ -20,6 +22,8 @@ export const addTodo = async (todo:Task):Promise<Task> => {
         body: JSON.stringify(todo), 
     });
     const newTodo  = res.json();
+    
+    //router.refresh(); //??? 追加削除したらページの更新したい。
     
     return newTodo;
 };  
